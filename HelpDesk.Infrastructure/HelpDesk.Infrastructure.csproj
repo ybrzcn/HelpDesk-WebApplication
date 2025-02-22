@@ -10,4 +10,8 @@
     <ProjectReference Include="..\HelpDesk.Core\HelpDesk.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.2" />
+  </ItemGroup>
+
 </Project>
