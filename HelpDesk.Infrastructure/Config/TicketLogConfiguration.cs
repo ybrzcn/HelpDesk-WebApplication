@@ -8,12 +8,14 @@ public class TicketLogConfiguration : IEntityTypeConfiguration<TicketLog>
 {
     public void Configure(EntityTypeBuilder<TicketLog> builder)
     {
-        builder.HasKey(tl => tl.Id);
-        builder.HasOne(tl => tl.Ticket)
+        builder.HasKey(x => x.Id);
+
+        builder.HasOne(x => x.Ticket)
                .WithMany()
-               .HasForeignKey(tl => tl.TicketId);
-        builder.HasOne(tl => tl.User)
+               .HasForeignKey(x => x.TicketId);
+
+        builder.HasOne(x => x.User)
                .WithMany()
-               .HasForeignKey(tl => tl.UserId);
+               .HasForeignKey(x => x.UserId);
     }
 }

@@ -8,6 +8,6 @@ public class TicketCategoryConfiguration : IEntityTypeConfiguration<TicketCatego
 {
     public void Configure(EntityTypeBuilder<TicketCategory> builder)
     {
-        builder.HasKey(tc => tc.Id);
+        builder.HasKey(x => x.Id);
     }
 }

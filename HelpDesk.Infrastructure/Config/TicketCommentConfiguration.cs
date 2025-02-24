@@ -8,9 +8,10 @@ public class TicketCommentConfiguration : IEntityTypeConfiguration<TicketComment
 {
     public void Configure(EntityTypeBuilder<TicketComment> builder)
     {
-        builder.HasKey(tc => tc.Id);
-        builder.HasOne(tc => tc.Ticket)
-               .WithMany(t => t.Comments)
-               .HasForeignKey(tc => tc.TicketId);
+        builder.HasKey(x => x.Id);
+
+        builder.HasOne(x => x.Ticket)
+               .WithMany(x => x.Comments)
+               .HasForeignKey(x => x.TicketId);
     }
 }

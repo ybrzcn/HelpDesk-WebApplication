@@ -8,11 +8,13 @@ public class SupportAgentConfiguration : IEntityTypeConfiguration<SupportAgent>
 {
     public void Configure(EntityTypeBuilder<SupportAgent> builder)
     {
-        builder.HasKey(sa => sa.Id);
-        builder.HasMany(sa => sa.AssignedTickets)
-               .WithOne(t => t.AssignedToAgent)
-               .HasForeignKey(t => t.AssignedToAgentId);
-        builder.HasMany(sa => sa.AllowedCategories)
-               .WithMany(tc => tc.AllowedAgents);
+        builder.HasKey(x => x.Id);
+
+        builder.HasMany(x => x.AssignedTickets)
+               .WithOne(x => x.AssignedToAgent)
+               .HasForeignKey(x => x.AssignedToAgentId);
+
+        builder.HasMany(x => x.AllowedCategories)
+               .WithMany(x => x.AllowedAgents);
     }
 }

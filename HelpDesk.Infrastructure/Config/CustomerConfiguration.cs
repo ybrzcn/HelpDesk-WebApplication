@@ -8,11 +8,13 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
     public void Configure(EntityTypeBuilder<Customer> builder)
     {
-        builder.HasKey(c => c.Id);
-        builder.HasMany(c => c.Tickets)
-               .WithOne(t => t.Customer)
-               .HasForeignKey(t => t.CustomerId);
-        builder.HasMany(c => c.AllowedCategories)
-               .WithMany(tc => tc.AllowedCustomers);
+        builder.HasKey(x => x.Id);
+
+        builder.HasMany(x => x.Tickets)
+               .WithOne(x => x.Customer)
+               .HasForeignKey(x => x.CustomerId);
+
+        builder.HasMany(x => x.AllowedCategories)
+               .WithMany(x => x.AllowedCustomers);
     }
 }

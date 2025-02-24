@@ -13,8 +13,9 @@ namespace HelpDesk.Core.Entities
         public Customer Customer { get; set; }
         public Guid? AssignedToAgentId { get; set; }
         public SupportAgent? AssignedToAgent { get; set; }
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         public TicketCategory Category { get; set; }
         public List<TicketComment> Comments { get; set; } = new();
+        public List<TicketAttachment> Attachments { get; set; } = new();
     }
 }
