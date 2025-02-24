@@ -1,4 +1,5 @@
-﻿using HelpDesk.Core.Enums;
+﻿using HelpDesk.Core.Entities.BaseEntities;
+using HelpDesk.Core.Enums;
 
 namespace HelpDesk.Core.Entities
 {

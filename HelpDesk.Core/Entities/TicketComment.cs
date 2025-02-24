@@ -1,3 +1,5 @@
+using HelpDesk.Core.Entities.BaseEntities;
+
 namespace HelpDesk.Core.Entities;
 
 public class TicketComment : BaseEntity
