@@ -1,6 +1,6 @@
 
 Introduction 📒
-HelpDesk Ticket System is an all purpose Help Desk Web Application programmed with ASP.NET CORE API and Angular 19.
+- HelpDesk Ticket System is an all purpose Help Desk Web Application programmed with ASP.NET CORE API and Angular 19.
 
 Features 📋
 - Create, view, and update support tickets
