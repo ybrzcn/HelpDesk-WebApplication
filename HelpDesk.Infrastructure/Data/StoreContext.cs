@@ -17,15 +17,15 @@ public class StoreContext(DbContextOptions<StoreContext> options) : DbContext(op
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new BaseEntityConfiguration());
-        modelBuilder.ApplyConfiguration(new UserBaseConfiguration());
-        modelBuilder.ApplyConfiguration(new CustomerConfiguration());
-        modelBuilder.ApplyConfiguration(new SupportAgentConfiguration());
-        modelBuilder.ApplyConfiguration(new TicketConfiguration());
-        modelBuilder.ApplyConfiguration(new TicketCategoryConfiguration());
-        modelBuilder.ApplyConfiguration(new TicketCommentConfiguration());
-        modelBuilder.ApplyConfiguration(new TicketAttachmentConfiguration());
-        modelBuilder.ApplyConfiguration(new TicketLogConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(BaseEntityConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserBaseConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CustomerConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(SupportAgentConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TicketConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TicketCategoryConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TicketCommentConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TicketAttachmentConfiguration).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TicketLogConfiguration).Assembly);
 
         base.OnModelCreating(modelBuilder);
     }
