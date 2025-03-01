@@ -1,6 +1,6 @@
 namespace HelpDesk.Core.Entities.BaseEntities;
 
-public abstract class BaseEntity
+public class BaseEntity
 {
     public Guid Id { get; set; }
     public DateTime CreatedDate { get; set; }

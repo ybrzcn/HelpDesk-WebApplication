@@ -1,11 +1,8 @@
 using HelpDesk.Core.Entities;
-using HelpDesk.Infrastructure.Config;
-using HelpDesk.Infrastructure.Config.BaseConfig;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
-namespace HelpDesk.Infrastructure.Data;
-
-public class StoreContext(DbContextOptions<StoreContext> options) : DbContext(options)
+public class StoreContext : DbContext
 {
     public DbSet<Customer> Customers { get; set; }
     public DbSet<SupportAgent> SupportAgents { get; set; }
@@ -15,18 +12,26 @@ public class StoreContext(DbContextOptions<StoreContext> options) : DbContext(op
     public DbSet<TicketAttachment> TicketAttachments { get; set; }
     public DbSet<TicketLog> TicketLogs { get; set; }
 
+    public StoreContext(DbContextOptions<StoreContext> options) : base(options) { }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(BaseEntityConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserBaseConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CustomerConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(SupportAgentConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TicketConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TicketCategoryConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TicketCommentConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TicketAttachmentConfiguration).Assembly);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TicketLogConfiguration).Assembly);
-
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(StoreContext).Assembly);
         base.OnModelCreating(modelBuilder);
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (optionsBuilder.IsConfigured)
+            return;
+
+        var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.Development.json").Build();
+        var connStr = configuration.GetConnectionString("DefaultConnection");
+
+        optionsBuilder.UseSqlServer(connStr, options =>
+        {
+            options.CommandTimeout(5_000);
+            options.EnableRetryOnFailure(maxRetryCount: 5);
+        });
     }
 }

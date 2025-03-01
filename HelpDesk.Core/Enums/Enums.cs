@@ -21,3 +21,13 @@ public enum TicketPriority
     High,
     Critical
 }
+
+public enum TicketAction
+{
+    Created,
+    Updated,
+    Deleted,
+    Assigned,
+    Commented,
+    AttachmentAdded
+}

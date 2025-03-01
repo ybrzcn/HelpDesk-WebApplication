@@ -1,4 +1,3 @@
-using HelpDesk.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace HelpDesk.API
