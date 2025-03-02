@@ -9,13 +9,15 @@ public class SupportAgentConfiguration : UserBaseConfiguration<SupportAgent>
 {
     public void Configure(EntityTypeBuilder<SupportAgent> builder)
     {
+        base.Configure(builder);
+
+        builder.Property(x => x.Role).IsRequired(false);
+
         builder.HasMany(x => x.AssignedTickets)
                .WithOne(x => x.AssignedToAgent)
                .HasForeignKey(x => x.AssignedToAgentId);
 
         builder.HasMany(x => x.AllowedCategories)
                .WithMany(x => x.AllowedAgents);
-
-        base.Configure(builder);
     }
 }

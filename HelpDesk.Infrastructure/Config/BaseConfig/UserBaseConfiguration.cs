@@ -8,11 +8,11 @@ public class UserBaseConfiguration<TEntity> : BaseEntityConfiguration<TEntity> w
 {
        public void Configure(EntityTypeBuilder<TEntity> builder)
        {
-            builder.HasKey(x => x.Id);
+            base.Configure(builder);
 
             builder.Property(x => x.FullName)
-                   .HasMaxLength(25)
-                   .IsRequired();
+                     .HasMaxLength(25)
+                     .IsRequired();
 
             builder.Property(x => x.UserName)
                    .HasMaxLength(25)
@@ -25,7 +25,5 @@ public class UserBaseConfiguration<TEntity> : BaseEntityConfiguration<TEntity> w
             builder.Property(x => x.PasswordHash)
                    .HasMaxLength(50)
                    .IsRequired();
-
-            base.Configure(builder);
-        }
+       }
 }

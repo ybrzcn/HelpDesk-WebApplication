@@ -9,13 +9,14 @@ public class CustomerConfiguration : UserBaseConfiguration<Customer>
 {
     public void Configure(EntityTypeBuilder<Customer> builder)
     {
-        builder.HasMany(x => x.Tickets)
-               .WithOne(x => x.Customer)
-               .HasForeignKey(x => x.CustomerId);
+        base.Configure(builder);
+
+        builder.HasMany(c => c.Tickets)
+              .WithOne(t => t.Customer)
+              .HasForeignKey(t => t.CustomerId)
+              .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasMany(x => x.AllowedCategories)
                .WithMany(x => x.AllowedCustomers);
-
-        base.Configure(builder);
     }
 }

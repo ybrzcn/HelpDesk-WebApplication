@@ -1,6 +1,6 @@
 namespace HelpDesk.Core.Entities.BaseEntities;
 
-public class UserBase : BaseEntity
+public abstract class UserBase : BaseEntity
 {
     public string FullName { get; set; }
     public string UserName { get; set; }
