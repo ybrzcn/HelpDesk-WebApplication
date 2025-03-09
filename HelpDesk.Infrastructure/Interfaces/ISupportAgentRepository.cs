@@ -5,7 +5,7 @@ namespace HelpDesk.Infrastructure.Interfaces
 {
     public interface ISupportAgentRepository : IBaseRepository<SupportAgent, SupportAgentDto>
     {
-        Task<IEnumerable<SupportAgentDto>> GetSupportAgentByEmailAsync(string email);
-        Task<IEnumerable<SupportAgentDto>> GetSupportAgentByUserNameAsync(string userName);
+        Task<SupportAgentDto> GetSupportAgentByEmailAsync(string email);
+        Task<SupportAgentDto> GetSupportAgentByUserNameAsync(string userName);
     }
 }

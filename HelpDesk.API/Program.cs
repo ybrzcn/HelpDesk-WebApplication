@@ -16,6 +16,7 @@ namespace HelpDesk.API
             builder.Services.AddControllers();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+            builder.Services.AddScoped<ISupportAgentRepository, SupportAgentRepository>();
 
             builder.Services.AddDbContext<StoreContext>(opt =>
             {
