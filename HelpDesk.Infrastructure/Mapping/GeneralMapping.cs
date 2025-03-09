@@ -8,8 +8,11 @@ namespace HelpDesk.Infrastructure.Mapping
     {
         public GeneralMapping()
         {
-            CreateMap<Customer, CustomerDto>().ReverseMap();
-            CreateMap<SupportAgent, SupportAgentDto>().ReverseMap();
+            CreateMap<Customer, CustomerDto>()
+                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.PasswordHash)).ReverseMap();
+            
+            CreateMap<SupportAgent, SupportAgentDto>()
+                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.PasswordHash)).ReverseMap();
         }
     }
 }

@@ -1,4 +1,6 @@
 using HelpDesk.Infrastructure.Contexts;
+using HelpDesk.Infrastructure.Interfaces;
+using HelpDesk.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace HelpDesk.API
@@ -12,6 +14,9 @@ namespace HelpDesk.API
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+
             builder.Services.AddDbContext<StoreContext>(opt =>
             {
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

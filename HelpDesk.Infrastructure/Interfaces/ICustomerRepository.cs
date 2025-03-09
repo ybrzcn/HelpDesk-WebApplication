@@ -5,7 +5,7 @@ namespace HelpDesk.Infrastructure.Interfaces
 {
     public interface ICustomerRepository : IBaseRepository<Customer, CustomerDto>
     {
-        Task<IEnumerable<CustomerDto>> GetUserByEmailAsync(string email);
-        Task<IEnumerable<CustomerDto>> GetUserByUserNameAsync(string userName);
+        Task<CustomerDto> GetUserByEmailAsync(string email);
+        Task<CustomerDto> GetUserByUserNameAsync(string userName);
     }
 }
