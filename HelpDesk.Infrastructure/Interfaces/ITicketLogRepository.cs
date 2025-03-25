@@ -1,4 +1,5 @@
 ﻿using HelpDesk.Core.Entities;
+using HelpDesk.Core.Enums;
 using HelpDesk.Infrastructure.Dtos;
 
 namespace HelpDesk.Infrastructure.Interfaces
@@ -7,6 +8,6 @@ namespace HelpDesk.Infrastructure.Interfaces
     {
         Task<IEnumerable<TicketLogDto>> GetTicketLogByTicketAsync(Guid id);
         Task<IEnumerable<TicketLogDto>> GetTicketLogByUserAsync(Guid id);
-        Task<IEnumerable<TicketLogDto>> GetTicketLogByActionAsync(Enum action);
+        Task<IEnumerable<TicketLogDto>> GetTicketLogByActionAsync(TicketAction action);
     }
 }
