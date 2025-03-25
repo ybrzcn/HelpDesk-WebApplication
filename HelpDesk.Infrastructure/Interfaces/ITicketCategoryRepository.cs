@@ -5,6 +5,6 @@ namespace HelpDesk.Infrastructure.Interfaces
 {
     public interface ITicketCategoryRepository : IBaseRepository<TicketCategory, TicketCategoryDto>
     {
-        Task<IEnumerable<TicketCategoryDto>> GetTicketCategoryByNameAsync(string name);
+        Task<TicketCategoryDto> GetTicketCategoryByNameAsync(string name);
     }
 }
